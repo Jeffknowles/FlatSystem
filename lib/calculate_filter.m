@@ -1,8 +1,8 @@
 function [a, b] = calculate_filter(Hdmag)
 %% estimate poles/zeros from impulse response, h(t)
-Nb = 15;                % number of zeros
-Na = 15;                % number of poles
-maxIter = 10;           % maximum iterations with Steiglitz-McBride algorithm
+Nb = 20;                % number of zeros
+Na = 10;                % number of poles
+maxIter = 20;           % maximum iterations with Steiglitz-McBride algorithm
 L = length(Hdmag);
 W = dftmtx(L); Wb = W; Wa = W;
 Wb(:,Nb+2:L) = []; Wa(:,Na+2:L) = [];

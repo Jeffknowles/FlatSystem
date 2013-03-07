@@ -70,10 +70,10 @@ H(((nfft/2)+2):nfft) = conj(flipud(H(2:(nfft/2))));
 %   Could be due to reverb or other reflections interfering with
 %   recorded microphone signal)
 Hdmag = abs(H);
-Hdmag_filt = resample(Hdmag,1,4000);
+Hdmag_filt = resample(Hdmag,1,800);
 Hdmag_filt = sgolayfilt(Hdmag_filt,2,7);       % use SG filter
-Hdmag_filt(floor(length(Hdmag_filt)/2)+1:2*floor(length(Hdmag_filt)/2)) = flipud(Hdmag_filt(1:floor(length(Hdmag_filt)/2)));
-Hdmag_filt = Hdmag_filt(1:2*floor(length(Hdmag_filt)/2));
+Hdmag_filt(floor(length(Hdmag_filt)/2)+1:2*floor(length(Hdmag_filt)/2)) = flipud(Hdmag_filt(1:fllength(Hdmag_filt)/2));
+Hdmag_filt(
 F_filt = (0:1/(length(Hdmag_filt)-1):1)';
 
 %[noise, b, y] = adaptive_filter(ts1.data, ts2.data, 100);
